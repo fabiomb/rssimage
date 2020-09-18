@@ -2,22 +2,22 @@
 /*
     Plugin Name: RSS Image
     Plugin URI: https://www.cakedivision.com
-    Description: Mostrar Imagenes en el RSS como <media>
+    Description: Mostrar Imagenes en el RSS como :media
     Author: Fabio Baccaglioni
     Version: 1.0
     Author URI: https://www.cakedivision.com
 */
  
 if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
+    exit; // Salir si se accede directo
 }
 
-// Add namespace for media:image element used below
+// Agregoe el namespace para media:image
 add_filter( 'rss2_ns', function(){
     echo 'xmlns:media="http://search.yahoo.com/mrss/"';
   });
   
-  // insert the image object into the RSS item (see MB-191)
+  // Inserto el objeto en el item de RSS
   add_action('rss2_item', function(){
     global $post;
     if (has_post_thumbnail($post->ID)){
